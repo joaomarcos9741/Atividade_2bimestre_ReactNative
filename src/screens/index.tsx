@@ -1,3 +1,3 @@
-export {Home as ScreenHome} from './SlideHome'
-export {Profile as ScreenProfile} from './Logi'
-export {LogBook as ScreenLogBook} from './SlideOption'
+export {Login as ScreenLogin} from './Login'
+export {Register as ScreenRegister} from './Register'
+export {Home as ScreenHome} from './Home'

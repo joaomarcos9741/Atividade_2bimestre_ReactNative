@@ -1,48 +1,22 @@
-import { createBottomTabNavigator, BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
-import { ScreenHome, ScreenProfile, ScreenLogBook} from '../../screens';
-import { Ionicons, FontAwesome, Octicons } from '@expo/vector-icons';
-
-type MenuTabParam = {
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { ScreenHome, ScreenLogin, ScreenRegister } from '../../screens'
+type LoginStackParamList = {
     Home: undefined
-    Profile: undefined
-    LogBook: undefined
+    Login: undefined
+    Register: undefined
 }
-
-type MenuScreenNavigation = BottomTabNavigationProp<MenuTabParam, "Home">
-export type MenuTabTypes = {
-    navigation: MenuScreenNavigation
+type LoginScreenNavigationProp = StackNavigationProp<LoginStackParamList, 'Home'>
+export type LoginTypes = {
+    navigation: LoginScreenNavigationProp
 }
-
-export function MenuTab() {
-    const Tab = createBottomTabNavigator<MenuTabParam>();
+export function LoginNavigation() {
+    const Stack = createStackNavigator<LoginStackParamList> ()
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={ScreenHome}
-                options={{
-                    tabBarIcon: () => (
-                        <Ionicons name="home-outline" size={24} color="black" />
-                    )
-                }}
+        <Stack.Navigator id='home' screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='Home' component={ScreenHome} />
+            <Stack.Screen name='Login' component={ScreenRegister} />
+            <Stack.Screen name='Register' component={ScreenLogin} />
 
-            />
-
-            <Tab.Screen name="LogBook" component={ScreenLogBook}
-                options={{
-                    tabBarIcon: () => (
-                        <Octicons name="graph" size={24} color="black" />                    )
-                }}
-
-            />
-
-            <Tab.Screen name="Profile" component={ScreenProfile}
-                options={{
-                    tabBarIcon: () => (
-                        <FontAwesome name="user-o" size={24} color="black" />
-                   )
-                }}
-
-            />
-
-        </Tab.Navigator>
+        </Stack.Navigator>
     )
 }
